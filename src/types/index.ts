@@ -4,3 +4,4 @@ export * from './ProductTableTypes';
 export * from './ProductFormModalTypes';
 export * from './ConfirmDialogTypes';
 export * from './ProductManagementPageTypes';
+export * from './HeadbarTypes';
