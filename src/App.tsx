@@ -4,10 +4,12 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
     setIsAuthenticated(authStatus === 'true');
+    setIsAuthChecked(true);
   }, []);
 
   const handleLogin = () => {
@@ -18,6 +20,10 @@ function App() {
     localStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
   };
+
+  if (!isAuthChecked) {
+    return null;
+  }
 
   return isAuthenticated ? (
     <ProductManagementPage onLogout={handleLogout} />
