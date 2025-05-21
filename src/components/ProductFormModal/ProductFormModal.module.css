@@ -1,0 +1,15 @@
+.dialog {
+  padding: 16px;
+}
+
+.formField {
+  margin-bottom: 16px;
+}
+
+.formField:last-child {
+  margin-bottom: 0;
+}
+
+.dialogActions {
+  padding: 16px 24px;
+}
