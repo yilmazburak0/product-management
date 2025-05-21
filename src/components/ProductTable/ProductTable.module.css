@@ -1,0 +1,27 @@
+.tableContainer {
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.descriptionCell {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
