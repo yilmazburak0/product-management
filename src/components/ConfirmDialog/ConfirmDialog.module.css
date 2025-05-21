@@ -3,10 +3,10 @@
 }
 
 .dialogTitle {
-  padding-bottom: 8px;
+  padding-bottom: var(--padding-sm);
 }
 
 .dialogActions {
-  padding: 16px 24px;
-  gap: 8px;
+  padding: var(--padding-md) var(--padding-xl);
+  gap: var(--spacing-sm);
 }

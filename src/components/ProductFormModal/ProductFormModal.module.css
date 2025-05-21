@@ -1,9 +1,9 @@
 .dialog {
-  padding: 16px;
+  padding: var(--padding-md);
 }
 
 .formField {
-  margin-bottom: 16px;
+  margin-bottom: var(--margin-md);
 }
 
 .formField:last-child {
@@ -11,5 +11,5 @@
 }
 
 .dialogActions {
-  padding: 16px 24px;
+  padding: var(--padding-md) var(--padding-xl);
 }

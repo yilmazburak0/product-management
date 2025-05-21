@@ -9,20 +9,24 @@ import {
   Paper, 
   IconButton, 
   Typography,
-  Box
+  Box,
+  useMediaQuery,
+  useTheme,
+  Tooltip
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import styles from './ProductTable.module.css';
 import { ProductTableProps } from '../../types';
 
-
-
 const ProductTable: React.FC<ProductTableProps> = ({ 
   products, 
   onEditProduct, 
   onDeleteProduct 
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
   if (products.length === 0) {
     return (
       <Box className={styles.emptyState}>
@@ -33,44 +37,58 @@ const ProductTable: React.FC<ProductTableProps> = ({
 
   return (
     <TableContainer component={Paper} className={styles.tableContainer}>
-      <Table aria-label="product table">
+      <Table aria-label="product table" size={isMobile ? "small" : "medium"}>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
+            {!isMobile && <TableCell>ID</TableCell>}
             <TableCell>Name</TableCell>
             <TableCell>Price</TableCell>
             <TableCell>Category</TableCell>
-            <TableCell>Description</TableCell>
+            {!isMobile && <TableCell>Description</TableCell>}
             <TableCell align="right">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {products.map((product) => (
-            <TableRow key={product.id}>
-              <TableCell>{product.id}</TableCell>
-              <TableCell>{product.name}</TableCell>
-              <TableCell>${product.price.toFixed(2)}</TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell className={styles.descriptionCell}>
-                {product.description}
-              </TableCell>
-              <TableCell align="right" className={styles.actionButtons}>
-                <IconButton 
-                  aria-label="edit" 
-                  color="primary" 
-                  onClick={() => onEditProduct(product)}
-                >
-                  <EditIcon />
-                </IconButton>
-                <IconButton 
-                  aria-label="delete" 
-                  color="error" 
-                  onClick={() => onDeleteProduct(product.id)}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
+            <React.Fragment key={product.id}>
+              <TableRow>
+                {!isMobile && <TableCell>{product.id}</TableCell>}
+                <TableCell>{product.name}</TableCell>
+                <TableCell>${product.price.toFixed(2)}</TableCell>
+                <TableCell>{product.category}</TableCell>
+                {!isMobile && (
+                  <TableCell className={styles.descriptionCell}>
+                    <Tooltip title={product.description} placement="top" arrow>
+                      <span>{product.description}</span>
+                    </Tooltip>
+                  </TableCell>
+                )}
+                <TableCell align="right" className={styles.actionButtons}>
+                  <IconButton
+                    aria-label="edit"
+                    color="primary"
+                    onClick={() => onEditProduct(product)}
+                    size={isMobile ? "small" : "medium"}>
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="delete"
+                    color="error"
+                    onClick={() => onDeleteProduct(product.id)}
+                    size={isMobile ? "small" : "medium"}>
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+              
+              {isMobile && (
+                <TableRow>
+                  <TableCell colSpan={4} className={styles.mobileDescription}>
+                    {product.description}
+                  </TableCell>
+                </TableRow>
+              )}
+            </React.Fragment>
           ))}
         </TableBody>
       </Table>

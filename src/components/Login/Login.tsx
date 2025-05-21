@@ -54,6 +54,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             fullWidth
             margin="normal"
             value={username}
+            placeholder='admin'
             onChange={(e) => setUsername(e.target.value)}
           />
           
@@ -63,6 +64,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             variant="outlined"
             fullWidth
             margin="normal"
+            placeholder='123456'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

@@ -1,26 +1,26 @@
 .container {
-  padding: 2rem 1rem;
+  padding: var(--padding-xl) var(--padding-md);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--margin-xl);
 }
 
 .title {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 @media (max-width: 600px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--spacing-md);
   }
   
   .container {
-    padding: 1rem 0.5rem;
+    padding: var(--padding-md) var(--padding-sm);
   }
 }
