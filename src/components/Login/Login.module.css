@@ -1,0 +1,21 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.loginForm {
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.alert {
+  margin-bottom: 1rem;
+}
+
+.submitButton {
+  margin-top: 1.5rem;
+}
